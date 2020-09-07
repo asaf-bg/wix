@@ -21,6 +21,24 @@ body {
 		margin: 12px 5px;
 	}
 
+	.results-container {
+		display: flex;
+		flex-wrap: nowrap;
+	}
+
+	.header-container {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: baseline;
+
+		h5 {
+			flex-grow: 8;
+		}
+		a {
+			flex-grow: 2;
+		}
+	}
+
 	header {
 		width: 100%;
 		flex-shrink: 0;
@@ -58,6 +76,23 @@ body {
 		font-weight: 500;
 		font-size: 12px;
 	}
+	.hide{
+		//color: white;
+		visibility: hidden;
+		cursor: pointer;
+		font-weight: 900;
+		font-size: 14px;
+		left: 90%;
+		bottom: 90%;
+
+	}
+
+	div:hover +.ticket, .ticket:hover {
+		.hide {
+			color: #3899ec;
+			visibility: visible;
+		}
+	}
 
 	.tickets {
 
@@ -77,29 +112,104 @@ body {
 			padding: 10px 20px;
 			transition: box-shadow .2s ease-in-out;
 			position: relative;
+			z-index:200;
 
 			&:hover {
 				box-shadow: 0 2px 6px 1px #d3d7da;
 			}
 
+
 			.title {
 				margin: 15px 0;
+				font-size: 16px;
+				font-weight: bold;
+				font-style: normal;
+				color: #20455e;
+				padding-bottom: 2px;
+			}
+
+			.problemText {
+				margin: 15px 0 ;
 				font-size: 16px;
 				font-weight: 400;
 				font-style: normal;
 				color: #20455e;
+				background-color:#fff ;
+				padding-top: 0px;
+				position: relative;
+				word-break: break-all;
+				padding-bottom: 0;
+
+			}
+
+			.problemText-less {
+				margin: 15px 0 ;
+				font-size: 16px;
+				font-weight: 400;
+				font-style: normal;
+				color: #20455e;
+				background-color:#fff ;
+				padding-top: 0px;
+				padding-bottom: 0;
+				position: relative;
+				word-break: break-all;
+
+				overflow: hidden;
+				text-overflow: ellipsis;
+				line-height: 16px;
+				height: 50px;
+				word-wrap: break-word;
+			}
+			.problem-text-show-button {
+				margin-left: 50px;
+			}
+
+			.boxed
+			{
+				font-size: 11px;
+				font-weight: bold;
+				color: #225174;
+				background-color:#d9f0fe ;
+				border-radius: 10px;
+				padding: 6px;
+				margin-left: 3px;
+				margin-right: 3px;
+				position: relative;
+				text-align: center;
+				height: fit-content;
+
+			}
+
+
+			.see-more-link{
+				color: cadetblue;
+				letter-spacing: 1px;
+				cursor: pointer;
+				alignment: left;
+				padding-top: 14px;
 			}
 			
-			footer {
+			.boxed-container {
 
-				display: flex;
+				display:flex;
+				position: relative;
+				flex-flow: nowrap;
 				justify-content: space-between;
-				
+				flex-direction: row-reverse;
+
+
 				.meta-data {
 					color: #7a92a5;
 					font-size: 12px;
 					margin: 10px 0;
 					flex-shrink: 0;
+					align-self: flex-start;
+					flex-grow: 10;
+				}
+
+				.boxed {
+					flex-grow: 1;
+					justify-self: flex-end;
 				}
 			}
 

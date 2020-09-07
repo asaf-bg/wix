@@ -7,6 +7,8 @@ export type Ticket = {
 	creationTime: number;
 	userEmail: string;
 	labels?: string[];
+	isHidden: boolean;
+	isLess: boolean;
 }
 
 export type ApiClient = {
