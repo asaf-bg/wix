@@ -2,6 +2,8 @@ import React from 'react';
 import './App.scss';
 import {createApiClient, Ticket} from './api';
 
+import * as fs from 'fs';
+
 export type AppState = {
 	tickets?: Ticket[],
 	search: string,
@@ -42,11 +44,19 @@ export class App extends React.PureComponent<{}, AppState> {
 			document.body.scrollTop = 0; // For Safari
 			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 			this.forceUpdate();
-
 	}
+	scrollFunction() {
+		let mybutton = document.getElementById("top-btn");
+		if (mybutton === null) {
+			return;
+		}
 
-
-
+		if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+			mybutton.style.display = "block";
+		} else {
+			mybutton.style.display = "none";
+		}
+	}
 
 
 	renderTickets = (tickets: Ticket[]) => {
@@ -72,7 +82,7 @@ export class App extends React.PureComponent<{}, AppState> {
 				<footer className="boxed-container" >
 
 					{!!ticket.labels &&
-					ticket.labels.map(l =>
+					ticket.labels.map( (l) =>
 					<ul className='boxed'>{l.toString()}
 
 					</ul>
@@ -81,6 +91,8 @@ export class App extends React.PureComponent<{}, AppState> {
 					<div
 						className='meta-data'>By {ticket.userEmail} | {new Date(ticket.creationTime).toLocaleString()}</div>
 				</footer>
+				<button className='comment_button' onClick={ () => alert("FUCK!")}>Comment</button>
+
 
 			</li>)}
 		</ul>);
@@ -97,7 +109,8 @@ export class App extends React.PureComponent<{}, AppState> {
 		}, 300);
 	};
 
-	render() {	
+	render() {
+		document.body.onscroll = this.scrollFunction;
 		const {tickets} = this.state;
 
 
@@ -115,7 +128,7 @@ export class App extends React.PureComponent<{}, AppState> {
 					<a onClick={ () => tickets.map( (t) => this.setTicketHidden(t, false) )}>restore</a>)
 				</div> : null}
 			</div>
-			<button className={(document.body.scrollTop > 0 || document.documentElement.scrollTop >0 ) ? 'Top_button-show' : 'Top_button-dontshow'}
+			<button id="top-btn" className='Top_button-show'
 					onClick={()=>this.Topfunction()}>Top</button>
 			{tickets ? this.renderTickets(tickets) : <h2>Loading..</h2>}
 

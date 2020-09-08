@@ -9,6 +9,7 @@ export type Ticket = {
 	labels?: string[];
 	isHidden: boolean;
 	isLess: boolean;
+	comment: string
 }
 
 export type ApiClient = {
