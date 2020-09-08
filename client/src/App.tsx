@@ -4,8 +4,10 @@ import {createApiClient, Ticket} from './api';
 
 export type AppState = {
 	tickets?: Ticket[],
-	search: string;
+	search: string,
+
 }
+
 const api = createApiClient();
 
 export class App extends React.PureComponent<{}, AppState> {
@@ -36,27 +38,38 @@ export class App extends React.PureComponent<{}, AppState> {
 		ticket.isLess = !ticket.isLess;
 		this.forceUpdate();
 	}
+	Topfunction (){
+			document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+			this.forceUpdate();
+
+	}
+
+
+
+
 
 	renderTickets = (tickets: Ticket[]) => {
+
 
 		const filteredTickets = tickets
 			.filter((t) => (t.title.toLowerCase() + t.content.toLowerCase()).includes(this.state.search.toLowerCase()))
 			.filter((t) => !t.isHidden);
 
-		return (<ul className='tickets'>
-			{filteredTickets.map((ticket) => <li key={ticket.id} className='ticket'>
+		return (<ul className='tickets' >
+			{filteredTickets.map((ticket) => <li  key={ticket.id} className='ticket' >
 				<div className='header-container'>
 					<h5 className='title'>{ticket.title}</h5>
 					<a className='hide' onClick={ () => this.setTicketHidden(ticket, true)  }>Hide </a>
 				</div>
 
-				<body className={ ticket.isLess ? 'problemText' : 'problemText-less'}>
+				<body className={ ticket.isLess ? 'problemText' : 'problemText-less'} >
 				{ticket.content}
 				</body>
 
 				<a className="problem-text-show-button" onClick={ () => this.flipTextLessMore(ticket) }> { ticket.isLess ? "Show Less" : "Show more" } </a>
 
-				<footer className="boxed-container">
+				<footer className="boxed-container" >
 
 					{!!ticket.labels &&
 					ticket.labels.map(l =>
@@ -68,6 +81,7 @@ export class App extends React.PureComponent<{}, AppState> {
 					<div
 						className='meta-data'>By {ticket.userEmail} | {new Date(ticket.creationTime).toLocaleString()}</div>
 				</footer>
+
 			</li>)}
 		</ul>);
 	};
@@ -89,7 +103,7 @@ export class App extends React.PureComponent<{}, AppState> {
 
 		return (<main>
 			<h1>Tickets List</h1>
-			<header>
+			<header >
 				<input type="search" placeholder="Search..." onChange={(e) => this.onSearch(e.target.value)}/>
 			</header>
 
@@ -101,6 +115,8 @@ export class App extends React.PureComponent<{}, AppState> {
 					<a onClick={ () => tickets.map( (t) => this.setTicketHidden(t, false) )}>restore</a>)
 				</div> : null}
 			</div>
+			<button className={(document.body.scrollTop > 0 || document.documentElement.scrollTop >0 ) ? 'Top_button-show' : 'Top_button-dontshow'}
+					onClick={()=>this.Topfunction()}>Top</button>
 			{tickets ? this.renderTickets(tickets) : <h2>Loading..</h2>}
 
 		</main>)
