@@ -20,17 +20,67 @@ body {
 		color: #7a92a5;
 		font-size: 12px;
 		margin: 12px 5px;
+		justify-self: flex-start;
+		position: relative;
 	}
 
 	.results-container {
 		display: flex;
 		flex-wrap: nowrap;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: baseline;
+
+		.toggle-container {
+			width: 70px;
+			background-color: #c4c4c4;
+			cursor: pointer;
+			user-select: none;
+			border-radius: 5px;
+			height: 22px;
+			position: relative;
+		}
+
+		.dialog-button {
+			font-size: 10px;
+			line-height: 14px;
+			font-weight: bold;
+			cursor: pointer;
+			background-color: #225174;
+			color: white;
+			padding: 3px 9px;
+			justify-content: center;
+			align-items: center;
+			width: 38px;
+			min-width: unset;
+			border-radius: 5px;
+			box-sizing: border-box;
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+			position: absolute;
+			left: 0;
+			transition: all 0.3s ease;
+		}
+
+		.disabled {
+			background-color: #707070;
+			left: 31px;
+		}
+	}
+
+	.sort-by {
+		position: relative;
+		align-self: center;
 	}
 
 	.header-container {
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: baseline;
+		position: relative;
+		flex-flow: nowrap;
+		justify-content: space-between;
+		flex-direction: row;
+
 
 		h5 {
 			flex-grow: 8;
@@ -72,19 +122,18 @@ body {
 	}
 
 	.Top_button-show{
-		display: none;
 		position: fixed; /* Fixed/sticky position */
 		bottom: 20px; /* Place the button at the bottom of the page */
 		right: 30px; /* Place the button 30px from the right */
 		z-index: 99; /* Make sure it does not overlap */
 		border: none; /* Remove borders */
 		outline: none; /* Remove outline */
-		background-color: red; /* Set a background color */
+		background-color:#225174 ; /* Set a background color */
 		color: white; /* Text color */
 		cursor: pointer; /* Add a mouse pointer on hover */
-		padding: 15px; /* Some padding */
+		padding: 5px; /* Some padding */
 		border-radius: 10px; /* Rounded corners */
-		font-size: 18px; /* Increase font size */
+		font-size: 30px; /* Increase font size */
 		&:hover
 		{
 			background-color: #555; /* Add a dark-grey background on hover */
@@ -99,13 +148,15 @@ body {
 		font-size: 12px;
 	}
 	.hide{
-		//color: white;
 		visibility: hidden;
+		position: absolute;
+		position: absolute;
 		cursor: pointer;
 		font-weight: 900;
 		font-size: 14px;
-		left: 90%;
-		bottom: 90%;
+		top: 0px;
+		right: 0px;
+
 
 	}
 
@@ -114,6 +165,30 @@ body {
 			color: #3899ec;
 			visibility: visible;
 		}
+	}
+	.hash_button
+	{
+		font-size: 14px;
+		font-weight: bold;
+		color: #225174;
+		background-color:#d9f0fe ;
+		border-radius: 10px;
+		padding: 6px;
+		margin-left: 3px;
+		margin-right:0px;
+		position: center;
+		text-align: center;
+		height: fit-content;
+		justify-self: center;
+		align-content: center;
+		cursor: pointer;
+
+		&:hover
+		{
+			background-color: #b6c1cd; /* Add a dark-grey background on hover */
+
+		}
+
 	}
 
 	.tickets {
@@ -235,23 +310,7 @@ body {
 				}
 
 			}
-			.comment_button
-			{
-				font-size: 14px;
-				font-weight: bold;
-				color: #225174;
-				background-color:#d9f0fe ;
-				border-radius: 10px;
-				padding: 6px;
-				margin-left: 3px;
-				margin-right:0px;
-				position: center;
-				text-align: center;
-				height: fit-content;
-				justify-self: center;
-				align-content: center;
 
-			}
 
 			
 		}
