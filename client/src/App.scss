@@ -16,13 +16,15 @@ body {
 		font-weight: 300;
 	}
 
-	.results {
+	.results-left {
 		color: #7a92a5;
 		font-size: 12px;
 		margin: 12px 5px;
 		justify-self: flex-start;
 		position: relative;
+		display: inline-flex;
 	}
+
 
 	.results-container {
 		display: flex;
@@ -122,21 +124,21 @@ body {
 	}
 
 	.Top_button-show{
-		position: fixed; /* Fixed/sticky position */
-		bottom: 20px; /* Place the button at the bottom of the page */
-		right: 30px; /* Place the button 30px from the right */
-		z-index: 99; /* Make sure it does not overlap */
-		border: none; /* Remove borders */
-		outline: none; /* Remove outline */
-		background-color:#225174 ; /* Set a background color */
-		color: white; /* Text color */
-		cursor: pointer; /* Add a mouse pointer on hover */
-		padding: 5px; /* Some padding */
-		border-radius: 10px; /* Rounded corners */
-		font-size: 30px; /* Increase font size */
+		position: fixed;
+		bottom: 20px;
+		right: 30px;
+		z-index: 99;
+		border: none;
+		outline: none;
+		background-color:#225174 ;
+		color: white;
+		cursor: pointer;
+		padding: 5px;
+		border-radius: 10px;
+		font-size: 30px;
 		&:hover
 		{
-			background-color: #555; /* Add a dark-grey background on hover */
+			background-color: #555;
 
 		}
 	}
@@ -156,6 +158,7 @@ body {
 		font-size: 14px;
 		top: 0px;
 		right: 0px;
+		text-decoration: none;
 
 
 	}
@@ -222,7 +225,7 @@ body {
 				font-weight: bold;
 				font-style: normal;
 				color: #20455e;
-				padding-bottom: 2px;
+				padding-bottom: 0px;
 			}
 
 			.problemText {
@@ -236,6 +239,13 @@ body {
 				position: relative;
 				word-break: break-all;
 				padding-bottom: 0;
+				font-family: 'Open Sans', sans-serif;
+				padding-left: 15px;
+				padding-right: 15px;
+
+
+
+
 
 			}
 
@@ -250,15 +260,20 @@ body {
 				padding-bottom: 0;
 				position: relative;
 				word-break: break-all;
+				font-family: 'Open Sans', sans-serif;
 
 				overflow: hidden;
 				text-overflow: ellipsis;
 				line-height: 16px;
 				height: 50px;
 				word-wrap: break-word;
+				padding-left: 15px;
+				padding-right: 15px;
+
 			}
 			.problem-text-show-button {
-				margin-left: 50px;
+				margin-left: 15px;
+				text-decoration: none;
 			}
 
 			.boxed
